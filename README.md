@@ -26,12 +26,13 @@ The VAL-2000 contains the following components in a very small package:
 ## Setup
 Setup only takes 3 minutes and 3 steps
 
-Connect any bipolar (4-wire) stepper motor
-Connect a 12V 2A+ power cord (2.1mm x 5.5mm barrel connector)
-Open a browser and connect via WiFi
+1. Connect any bipolar (4-wire) stepper motor
+2. Connect a 12V 2A+ power cord (2.1mm x 5.5mm barrel connector)
+3. Open a browser and connect via WiFi
+
 And that's it!
 
-If you love to program, that's great! We've made it extremely simple to do so. Simply download the source code on Github and plug in a USB cord to quickly flash your new firmware. 
+If you love to program, that's great! We've made it extremely simple to do so. Simply download the source code in the VAL-2000 folder and plug in a USB cord to quickly flash your new firmware. 
 
  
 ## WiFi Control
@@ -74,8 +75,6 @@ The Texas Instruments TPS62162DSGR 1A Synchronous DC/DC converter provides ultra
 
 ### ESP32-WROOM-32D
 This dual-core ESP32 sits at the heart of the board. Its low-cost to high-performance ratio is unlike any other. It provides stepper motor control as well as maintains the wireless connection for WiFi and MQTT access.
-
-
 
 ![alt text](/Media/VAL-2000-angle.jpg)
 
