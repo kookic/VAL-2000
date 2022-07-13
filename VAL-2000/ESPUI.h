@@ -146,8 +146,8 @@ void ESPUIsetup() {
 
   uint16_t tab1 = ESPUI.addControl(ControlType::Tab, "Positioning", "Positioning");
   uint16_t tab2 = ESPUI.addControl(ControlType::Tab, "Settings", "Settings");
-  uint16_t tab4 = ESPUI.addControl(ControlType::Tab, "WiFi", "WiFi");
-  uint16_t tab5 = ESPUI.addControl(ControlType::Tab, "API", "API");
+  uint16_t tab3 = ESPUI.addControl(ControlType::Tab, "WiFi", "WiFi");
+  uint16_t tab4 = ESPUI.addControl(ControlType::Tab, "API", "API");
 
   // shown above all tabs. Not part of any tab
   //status = ESPUI.addControl(ControlType::Label, "Status:", "Stop", ControlColor::Turquoise);
@@ -181,7 +181,7 @@ void ESPUIsetup() {
   ESPUI.addControl(ControlType::Max, "", "255", ControlColor::None, stallMax);
 
 
-  //Tab4: WiFi
+  //Tab3: WiFi
   ESPUI.addControl(ControlType::Separator, "Wifi Status", "", ControlColor::None, tab4);
   //Label: Is wifi set?
 
@@ -209,7 +209,7 @@ void ESPUIsetup() {
   //Button: Save
   ESPUI.addControl(ControlType::Button, "Save Settings", "SAVE", ControlColor::Emerald, tab4, &buttonSaveNetworkCall);
 
-  //Tab5: API
+  //Tab4: API
   char apiPosition[50];
   snprintf(apiPosition, sizeof(apiPosition), "http://%s:8080/position?percent=%i", ip_address.c_str(), move_to_percent);
   ESPUI.addControl(ControlType::Label, "Move to Position", apiPosition, ControlColor::Turquoise, tab5);
