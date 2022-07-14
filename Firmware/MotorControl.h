@@ -46,16 +46,12 @@ TMC2209Stepper driver(&SERIAL_PORT_2, R_SENSE , DRIVER_ADDRESS);
 
 void IRAM_ATTR button1pressed()
 {
-
-
   #ifdef CAP_BUTTONS
   btn1Press = 1; //
   #else
   move_to_step = 0; //
   run_motor = true; //
   #endif
-
-  
 }
 
 void IRAM_ATTR button2pressed()
@@ -100,13 +96,6 @@ void setZero()
   
 }
 
-void goHome()
-{
-  current_position = 0;
-  move_to_step = -10000;
-  run_motor = true;
-}
-
 void move_motor() {
   Serial.print("Current Position: ");
   Serial.println(current_position);
@@ -120,7 +109,7 @@ void move_motor() {
   sensor1_trip = false;
   sensor2_trip = false;
 
-  stepper->setAcceleration(accel);;
+  stepper->setAcceleration(accel);
   stepper->setSpeedInHz(max_speed);
   driver.rms_current(current);
   driver.SGTHRS(stall);
@@ -147,9 +136,7 @@ void move_motor() {
       }
 
       vTaskDelay(1);
-
     }
-
   }
 
   else if (move_to_step < current_position) //close

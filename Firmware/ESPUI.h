@@ -194,13 +194,12 @@ void ESPUIsetup() {
     display_wifi = "ACCESS POINT";
   }
 
-  labelWifi = ESPUI.addControl(ControlType::Label, "Wifi Status", display_wifi, ControlColor::Emerald, tab4);
+  labelWifi = ESPUI.addControl(ControlType::Label, "Wifi Status", display_wifi, ControlColor::Emerald, tab3);
   //Button: Clear Network Settings
   ESPUI.addControl(ControlType::Button, "Clear Settings", "CLEAR", ControlColor::Emerald, tab3, &buttonClearNetworkCall);
   //Text: Name
 
-
-  ESPUI.addControl(ControlType::Separator, "Set Wifi", "", ControlColor::None, tab4);
+  ESPUI.addControl(ControlType::Separator, "Set Wifi", "", ControlColor::None, tab3);
   wifi_ssid_text = ESPUI.addControl(ControlType::Text, "Network", ssid, ControlColor::Emerald, tab3, &textNetworkCall);
 
   //Text: Password
