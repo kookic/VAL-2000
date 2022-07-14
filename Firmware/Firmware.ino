@@ -11,6 +11,7 @@
 #include "API.h"
 #include "ESPUI.h"
 
+
 void setup() {
 
   Serial.begin(115200);
@@ -32,6 +33,7 @@ void setup() {
     ,  NULL
     ,  1);
 
+#ifdef CAP_BUTTONS
   xTaskCreatePinnedToCore(
     ButtonTask //Motor Task
     ,  "ButtonTask"   // A name just for humans
@@ -40,7 +42,9 @@ void setup() {
     ,  3  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
     ,  NULL
     ,  0);
+#endif
 }
+
 
 void loop()
 {
@@ -51,6 +55,7 @@ void loop()
 /*---------------------- Tasks ---------------------*/
 /*--------------------------------------------------*/
 
+#ifdef CAP_BUTTONS
 void ButtonTask(void *pvParameters)  // Motor Task
 {
   (void) pvParameters;
@@ -167,6 +172,7 @@ void ButtonTask(void *pvParameters)  // Motor Task
     }
   }
 }
+#endif
 
 void MotorTask(void *pvParameters)  // Motor Task
 {

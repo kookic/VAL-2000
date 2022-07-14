@@ -182,7 +182,7 @@ void ESPUIsetup() {
 
 
   //Tab3: WiFi
-  ESPUI.addControl(ControlType::Separator, "Wifi Status", "", ControlColor::None, tab4);
+  ESPUI.addControl(ControlType::Separator, "Wifi Status", "", ControlColor::None, tab3);
   //Label: Is wifi set?
 
 
@@ -196,27 +196,27 @@ void ESPUIsetup() {
 
   labelWifi = ESPUI.addControl(ControlType::Label, "Wifi Status", display_wifi, ControlColor::Emerald, tab4);
   //Button: Clear Network Settings
-  ESPUI.addControl(ControlType::Button, "Clear Settings", "CLEAR", ControlColor::Emerald, tab4, &buttonClearNetworkCall);
+  ESPUI.addControl(ControlType::Button, "Clear Settings", "CLEAR", ControlColor::Emerald, tab3, &buttonClearNetworkCall);
   //Text: Name
 
 
   ESPUI.addControl(ControlType::Separator, "Set Wifi", "", ControlColor::None, tab4);
-  wifi_ssid_text = ESPUI.addControl(ControlType::Text, "Network", ssid, ControlColor::Emerald, tab4, &textNetworkCall);
+  wifi_ssid_text = ESPUI.addControl(ControlType::Text, "Network", ssid, ControlColor::Emerald, tab3, &textNetworkCall);
 
   //Text: Password
-  wifi_pass_text = ESPUI.addControl(ControlType::Text, "Password", "******", ControlColor::Emerald, tab4, &textPasswordCall);
+  wifi_pass_text = ESPUI.addControl(ControlType::Text, "Password", "******", ControlColor::Emerald, tab3, &textPasswordCall);
 
   //Button: Save
-  ESPUI.addControl(ControlType::Button, "Save Settings", "SAVE", ControlColor::Emerald, tab4, &buttonSaveNetworkCall);
+  ESPUI.addControl(ControlType::Button, "Save Settings", "SAVE", ControlColor::Emerald, tab3, &buttonSaveNetworkCall);
 
   //Tab4: API
   char apiPosition[50];
   snprintf(apiPosition, sizeof(apiPosition), "http://%s:8080/position?percent=%i", ip_address.c_str(), move_to_percent);
-  ESPUI.addControl(ControlType::Label, "Move to Position", apiPosition, ControlColor::Turquoise, tab5);
+  ESPUI.addControl(ControlType::Label, "Move to Position", apiPosition, ControlColor::Turquoise, tab4);
 
   char apisettings[50];
   snprintf(apisettings, sizeof(apisettings), "http://%s:8080/settings", ip_address.c_str());
-  ESPUI.addControl(ControlType::Label, "Check Settings", apisettings, ControlColor::Turquoise, tab5);
+  ESPUI.addControl(ControlType::Label, "Check Settings", apisettings, ControlColor::Turquoise, tab4);
 
   ESPUI.sliderContinuous = false;
   ESPUI.begin("Valar Systems");

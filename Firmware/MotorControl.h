@@ -1,3 +1,6 @@
+//Uncomment this if using the additional Capacitive Buttons
+//#define CAP_BUTTONS
+
 uint16_t positionLabel;
 
 #include "soc/timer_group_struct.h"
@@ -43,16 +46,27 @@ TMC2209Stepper driver(&SERIAL_PORT_2, R_SENSE , DRIVER_ADDRESS);
 
 void IRAM_ATTR button1pressed()
 {
-  //move_to_step = 0;
-  //run_motor = true;
-  btn1Press = 1;
+
+
+  #ifdef CAP_BUTTONS
+  btn1Press = 1; //
+  #else
+  move_to_step = 0; //
+  run_motor = true; //
+  #endif
+
+  
 }
 
 void IRAM_ATTR button2pressed()
 {
-  //move_to_step = max_steps;
-  //run_motor = true;
+  #ifdef CAP_BUTTONS
   btn2Press = 1;
+  #else
+  move_to_step = max_steps;
+  run_motor = true;
+  #endif
+  
 }
 
 void IRAM_ATTR stalled_position()
@@ -178,28 +192,28 @@ void setup_motors() {
   pinMode(SENSOR2, INPUT);
   SERIAL_PORT_2.begin(115200);
 
-  driver.begin();
-  driver.toff(4);
-  driver.blank_time(24);
-  driver.I_scale_analog(false);
-  driver.internal_Rsense(false);
-  driver.mstep_reg_select(true);
-  driver.rms_current(current);
-  driver.SGTHRS(stall);
-  driver.microsteps(motor_microsteps);
-  driver.TCOOLTHRS(tcools); //
-  driver.TPWMTHRS(0);
-  driver.semin(0);
+  driver.begin(); // Start all the UART communications functions behind the scenes
+  driver.toff(4); //For operation with StealthChop, this parameter is not used, but it is required to enable the motor. In case of operation with StealthChop only, any setting is OK
+  driver.blank_time(24); //Recommended blank time select value
+  driver.I_scale_analog(false); // Disbaled to use the extrenal current sense resistors 
+  driver.internal_Rsense(false); // Use the external Current Sense Resistors. Do not use the internal resistor as it can't handle high current.
+  driver.mstep_reg_select(true); //Microstep resolution selected by MSTEP register and NOT from the legacy pins.
+  driver.rms_current(current); // Set the current in milliamps.
+  driver.SGTHRS(stall); //Set the stall value from 0-255. Higher value will make it stall quicker.
+  driver.microsteps(motor_microsteps); //Set the number of microsteps. Due to the "MicroPlyer" feature, all steps get converterd to 256 microsteps automatically. However, setting a higher step count allows you to more accurately more the motor exactly where you want.
+  driver.TCOOLTHRS(tcools); // Minimum speed at which point to turn on StallGuard. StallGuard does not work as very low speeds such as the beginning of acceleration so we need to keep it off until it reaches a reliable speed.
+  driver.TPWMTHRS(0); //DisableStealthChop PWM mode/ Page 25 of datasheet
+  driver.semin(0); // Turn off smart current control, known as CoolStep. It's a neat feature but is more complex and messes with StallGuard.
 
   if (open_direction == 1)
   {
-    driver.shaft(true);
+    driver.shaft(true); // Set the shaft direction. 
   } else {
-    driver.shaft(false);
+    driver.shaft(false); // Set the shaft direction. 
   }
 
-  driver.en_spreadCycle(false);
-  driver.pdn_disable(true);
+  driver.en_spreadCycle(false); // Disable SpreadCycle. We want StealthChop becuase it works with StallGuard.
+  driver.pdn_disable(true); // Enable UART control
 
   engine.init();
   stepper = engine.stepperConnectToPin(STEP_PIN);
