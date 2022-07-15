@@ -1,6 +1,6 @@
 # VAL-2000
 
-## The VAL-2000 is the easiest, fastest, cheapest, safest, and most wireless-t way to spin a stepper motor. 
+## The VAL-2000 is the easiest, fastest, cheapest, safest, and wireless way to spin a stepper motor. 
 
 <img src="https://github.com/Valar-Systems/VAL-2000/blob/main/Media/VAL-2000-Overview.jpg" width="650">
 
@@ -28,6 +28,7 @@ Setup only takes 3 minutes and 3 steps
 2. Connect a 12V 2A+ power cord (2.1mm x 5.5mm barrel connector)
 3. Open a browser and connect via WiFi
 
+To learn how to program the TMC2209. please visit the [Ultimate Guide](https://valarsystems.com/blogs/val-2000/ultimate-guide) to programming it.
 
 If you want to program it we've made it extremely simple to do so. Download the source code in the VAL-2000 folder and plug in a USB cord to quickly flash your new firmware. 
 
