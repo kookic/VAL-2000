@@ -2,9 +2,7 @@
 
 ## The VAL-2000 is the easiest, fastest, cheapest, safest, and most wireless-t way to spin a stepper motor. 
 
-
-![alt text](/Media/VAL-2000-Overview.jpg)
-
+<img src="https://github.com/Valar-Systems/VAL-2000/blob/main/Media/VAL-2000-Overview.jpg" width="650">
 
 You can precisely control a motor's distance, speed, current, and stall characteristics within minutes of receiving it. No programming experience is required. 
 
@@ -30,9 +28,10 @@ Setup only takes 3 minutes and 3 steps
 2. Connect a 12V 2A+ power cord (2.1mm x 5.5mm barrel connector)
 3. Open a browser and connect via WiFi
 
-And that's it!
 
-If you love to program, that's great! We've made it extremely simple to do so. Simply download the source code in the VAL-2000 folder and plug in a USB cord to quickly flash your new firmware. 
+If you want to program it we've made it extremely simple to do so. Download the source code in the VAL-2000 folder and plug in a USB cord to quickly flash your new firmware. 
+
+To view the schematic, click [here](https://github.com/Valar-Systems/VAL-2000/blob/main/Schematic.pdf).
 
  
 ## WiFi Control
