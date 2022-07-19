@@ -1,7 +1,7 @@
 # VAL-2000 HTTP Server Firmware
 ## Getting Started with the VAL-2000
 
-This firmware will get you started with spinning the VAL-1000 WiFi stepper board.
+This firmware will get you started with spinning the VAL-2000 WiFi stepper board.
 
 ## Step 1 - Connect Power & Motor
 1. Connect a 12V 2A+ power cord like [this](https://amzn.to/30qsbh7)
@@ -36,7 +36,7 @@ Next, convert 12mm diameter to circumferance which is 37.7 mm.
 Next, divide the total travel by cicumferance 
 
 ## Step 2 - Download and open the Arduino code
-Using Arduino, open the VAL-1000.ino file
+Using Arduino, open the VAL-2000.ino file
 
 You will need to install the ESP32 core, as well as several libraries:
 
@@ -45,7 +45,6 @@ Install the ESP32 core by following the instructions [here](https://randomnerdtu
 Install the following libriaires inside Arduino
 1. [TMC Stepper](https://www.arduino.cc/reference/en/libraries/tmcstepper/)
 2. [FastAccelStepper](https://www.arduino.cc/reference/en/libraries/fastaccelstepper/)
-3. [ezTime](https://www.arduino.cc/reference/en/libraries/eztime/)
 4. [ESPUI](https://github.com/s00500/ESPUI)
 5. [ArduinoJson](https://www.arduino.cc/reference/en/libraries/arduinojson/)
 
@@ -100,7 +99,7 @@ Enter in the name and password of your wifi router. Your device will now connect
 
 Change your wifi network back to your router because you will get disconnected from the VALAR-AP network.
 
-You now need to find the IP address that your router assigned to the VAL-1000 device. To do this, use a network scanning tool like [angryip](https://angryip.org/)
+You now need to find the IP address that your router assigned to the VAL-2000 device. To do this, use a network scanning tool like [angryip](https://angryip.org/)
 
 The hostname should be "esp32-arduino". Find the IP address of this device and enter the IP address into your browser.
 
