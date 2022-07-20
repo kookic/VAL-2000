@@ -5,7 +5,7 @@ This firmware will get you started with spinning the VAL-2000 WiFi stepper board
 
 ## Step 1 - Connect Power & Motor
 1. Connect a 5-12V 2A+ power cord like [this](https://amzn.to/30qsbh7)
-NOTE: To reach higher speeds, use higher voltage. 5V will be limited to a very slow speed. 12V is recommended.
+**NOTE:** To reach higher speeds, use higher voltage. 5V will be limited to a very slow speed. 12V is recommended.
 2. Connect a stepper motor like [this](https://amzn.to/3kUWkP4)
 
 If you need to move something heavy, over 50 lbs, consider using a geared motor [like this](https://amzn.to/3c9xmI0)
