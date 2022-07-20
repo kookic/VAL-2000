@@ -8,7 +8,7 @@ You can precisely control a motor's distance, speed, current, and stall characte
 
 This is the exact board used in [Glasscalibur](https://github.com/Valar-Systems/Glasscalibur).
 
-If you want to program it yourself, you can find the code [here](/VAL-2000/tree/main/VAL-2000).
+If you want to program it yourself, you can find the code [here](https://github.com/Valar-Systems/VAL-2000/tree/main/Firmware).
 
 The VAL-2000 contains the following components in a very small package:
 
