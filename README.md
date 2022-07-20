@@ -8,7 +8,9 @@ You can precisely control a motor's distance, speed, current, and stall characte
 
 This is the exact board used in [Glasscalibur](https://github.com/Valar-Systems/Glasscalibur).
 
-If you want to program it yourself, you can find the code [here](https://github.com/Valar-Systems/VAL-2000/tree/main/Firmware).
+### If you want to program it yourself, you can find the code [here](https://github.com/Valar-Systems/VAL-2000/tree/main/Firmware).
+
+### If you want to learn how Trinamic drivers work and a deep dive into the code, please visit [this guide](https://valarsystems.com/blogs/val-2000/ultimate-guide).
 
 The VAL-2000 contains the following components in a very small package:
 
