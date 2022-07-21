@@ -12,7 +12,7 @@ Due to the popularity of 3D printers, the costs of stepper motors have come down
 
 ### 1. Elderly & Disabled
 
-Many windows and sliding doors are very heavy and require a substantial amount of force to move them. This board can be turned into an automatic window opener like the [Glasscalibur](https://github.com/Valar-Systems/Glasscalibur) or a sliding door opener like [this](https://youtu.be/Wihzpsax5Kg). The possibilities here are andless
+Many windows and sliding doors are very heavy and require a substantial amount of force to move them. This board can be turned into an automatic window opener like the [Glasscalibur](https://github.com/Valar-Systems/Glasscalibur) or a sliding door opener like [this](https://youtu.be/Wihzpsax5Kg). The possibilities are endless.
 
 ### 2. Energy efficiency
 
