@@ -6,6 +6,8 @@ Precisely control a motor's distance, speed, current, and stall characteristics 
 
 <img src="https://github.com/Valar-Systems/VAL-2000/blob/main/Media/VAL-2000-Overview.jpg" width="650">
 
+<img src="https://github.com/Valar-Systems/VAL-2000/blob/main/Media/spinning_gif.gif" width="650">
+
 ## Why does it exist?
 
 Due to the popularity of 3D printers, the costs of stepper motors have come down substantially and we belive they can be used much more extensively around the house. The board was initially designed for [Glasscalibur](https://github.com/Valar-Systems/Glasscalibur) which is an automatic window opener, but I've decided to sell it seperately as well.
