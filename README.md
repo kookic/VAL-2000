@@ -1,6 +1,6 @@
 # VAL-2000
 
-## The VAL-2000 is the easiest, fastest, cheapest, safest, and wireless way to spin a stepper motor. 
+## The VAL-2000 is the easiest, fastest, cheapest, safest, wireless and best stepper motor motion controller. 
 
 Precisely control a motor's distance, speed, current, and stall characteristics within minutes of receiving it. No programming experience is required. 
 
@@ -9,6 +9,10 @@ Precisely control a motor's distance, speed, current, and stall characteristics 
 ## Why does it exist?
 
 Due to the popularity of 3D printers, the costs of stepper motors have come down substantially and we belive they can be used much more extensively around the house. The board was initially designed for [Glasscalibur](https://github.com/Valar-Systems/Glasscalibur) which is an automatic window opener, but I've decided to sell it seperately as well.
+
+#### If you want to program it yourself, you can find the code [here](https://github.com/Valar-Systems/VAL-2000/tree/main/Firmware).
+
+#### If you want to learn how Trinamic drivers work and a deep dive into the code, please visit [this guide](https://valarsystems.com/blogs/val-2000/ultimate-guide).
 
 ### 1. Elderly & Disabled
 
@@ -37,10 +41,7 @@ Absolutely not, but in the end it's much faster and cheaper to buy the board tha
 Shipping this out of the US can be expensive so it may make more sense to build one yourself. Please visit the [schematic page](https://github.com/Valar-Systems/VAL-2000/blob/main/Schematic.pdf) to build one.
 
 
-
-#### If you want to program it yourself, you can find the code [here](https://github.com/Valar-Systems/VAL-2000/tree/main/Firmware).
-
-#### If you want to learn how Trinamic drivers work and a deep dive into the code, please visit [this guide](https://valarsystems.com/blogs/val-2000/ultimate-guide).
+## What can it do?
 
 The VAL-2000 contains the following components in a very small package:
 
@@ -51,6 +52,7 @@ The VAL-2000 contains the following components in a very small package:
 5. Two limit switch inputs
 6. Two-button inputs
 
+This combination will get you started building nearly any motion control project you can think of.
  
 
 ## Setup
