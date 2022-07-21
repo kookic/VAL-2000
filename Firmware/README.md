@@ -1,42 +1,19 @@
 # VAL-2000 HTTP Server Firmware
 ## Getting Started with the VAL-2000
 
-This firmware will get you started with spinning the VAL-1000 WiFi stepper board.
+This firmware will get you started with spinning the VAL-2000 WiFi stepper board.
 
 ## Step 1 - Connect Power & Motor
-1. Connect a 12V 2A+ power cord like [this](https://amzn.to/30qsbh7)
+1. Connect a 5-12V 2A+ power cord like [this](https://amzn.to/30qsbh7)
+**NOTE:** To reach higher speeds, use higher voltage. 5V will be limited to a very slow speed. 12V is recommended.
 2. Connect a stepper motor like [this](https://amzn.to/3kUWkP4)
 
 If you need to move something heavy, over 50 lbs, consider using a geared motor [like this](https://amzn.to/3c9xmI0)
 
-## Step 2 - Open Browser on device with Wi-Fi
-Use your phone, laptop, or other device with Wifi and open up a browser such as Chrome or Firefox.
-
-Go to http://192.168.4.1
-
-## Step 3 - Test
-
-In the top box, enter a value from 0-100, the motor should spin.
-
-
-## Step 3 - Setup
-
-The position value is a percentage vate from 0-100. If you enter 100, it will move 100 percent of the way. If you enter 0, it will move to the home position.
-
-The position percentage value is based on the max steps value. The max steps is the number of steps you want it to move to open 100 percent of the way. 
-
-For example, if you have a curtain opener, and need it to move 20000 steps to open and close, you will enter 20000 here. 
-
-There are 200 steps per revolution. To figure out how many steps to set, first measure the distance you want your device to travel. Let's say it's 20 inches, which is 508 mm.
-
-Next, measure the diameter of the pulley you are using. In the case of the S1 curtain opener, it is 12mm.
-
-Next, convert 12mm diameter to circumferance which is 37.7 mm.
-
-Next, divide the total travel by cicumferance 
+### NOTE: External power is required to flash the board via USB
 
 ## Step 2 - Download and open the Arduino code
-Using Arduino, open the VAL-1000.ino file
+Using Arduino, open the Firmware.ino file
 
 You will need to install the ESP32 core, as well as several libraries:
 
@@ -45,7 +22,6 @@ Install the ESP32 core by following the instructions [here](https://randomnerdtu
 Install the following libriaires inside Arduino
 1. [TMC Stepper](https://www.arduino.cc/reference/en/libraries/tmcstepper/)
 2. [FastAccelStepper](https://www.arduino.cc/reference/en/libraries/fastaccelstepper/)
-3. [ezTime](https://www.arduino.cc/reference/en/libraries/eztime/)
 4. [ESPUI](https://github.com/s00500/ESPUI)
 5. [ArduinoJson](https://www.arduino.cc/reference/en/libraries/arduinojson/)
 
@@ -90,6 +66,7 @@ In your browser, enter http://192.168.4.1/
 
 You are now connected to the device and can begin to control the motor directly.
 
+
 ## Step 5 - Add board to your network
 
 It's best to add this device to your network so you do not need to connect to it directly. 
@@ -100,11 +77,12 @@ Enter in the name and password of your wifi router. Your device will now connect
 
 Change your wifi network back to your router because you will get disconnected from the VALAR-AP network.
 
-You now need to find the IP address that your router assigned to the VAL-1000 device. To do this, use a network scanning tool like [angryip](https://angryip.org/)
+You now need to find the IP address that your router assigned to the VAL-2000 device. To do this, use a network scanning tool like [angryip](https://angryip.org/)
 
 The hostname should be "esp32-arduino". Find the IP address of this device and enter the IP address into your browser.
 
 You should now be connected to the device.
+
 
 ## Step 6 - Control your motor
 
@@ -116,6 +94,20 @@ Set motor parameters by modifiying the following values:
 This value is used to set the maximum number of steps to move the motor to 100 percent. If you have a curtain or window, set the number of steps that will be required to move the motor to open/close the curtain all the way. 
 
 There are 200 steps per revolution so use some math to figure out how many steps you need.
+
+The position value is a percentage vate from 0-100. If you enter 100, it will move 100 percent of the way. If you enter 0, it will move to the home position.
+
+The position percentage value is based on the max steps value. The max steps is the number of steps you want it to move to open 100 percent of the way. 
+
+For example, if you have a curtain opener, and need it to move 20000 steps to open and close, you will enter 20000 here. 
+
+There are 200 steps per revolution. To figure out how many steps to set, first measure the distance you want your device to travel. Let's say it's 20 inches, which is 508 mm.
+
+Next, measure the diameter of the pulley you are using. In the case of the S1 curtain opener, it is 12mm.
+
+Next, convert 12mm diameter to circumferance which is 37.7 mm.
+
+Next, divide the total travel by cicumferance 
 
 ### current
 This value (400-2000) sets the amount of current in milliamps that will run through the motor. The higher the current, the stronger the motor will be. However, it will also run hotter as well as make setting the stall value more difficult. It is recommended to set the current to the minimum required to move your motor. Start at a small value and move up until the motor moves how you want. The maximum value is 2000 mA. 
@@ -142,3 +134,4 @@ You may want to set up some automations to control your device. To trigger the m
 Go to the API tab to find the exact address to send the commands to.
 
 Replace the "0" with a value of 0-100 to set the position.
+
