@@ -2,15 +2,45 @@
 
 ## The VAL-2000 is the easiest, fastest, cheapest, safest, and wireless way to spin a stepper motor. 
 
+Precisely control a motor's distance, speed, current, and stall characteristics within minutes of receiving it. No programming experience is required. 
+
 <img src="https://github.com/Valar-Systems/VAL-2000/blob/main/Media/VAL-2000-Overview.jpg" width="650">
 
-You can precisely control a motor's distance, speed, current, and stall characteristics within minutes of receiving it. No programming experience is required. 
+## Why does it exist?
 
-This is the exact board used in [Glasscalibur](https://github.com/Valar-Systems/Glasscalibur).
+Due to the popularity of 3D printers, the costs of stepper motors have come down substantially and we belive they can be used much more extensively around the house. The board was initially designed for [Glasscalibur](https://github.com/Valar-Systems/Glasscalibur) which is an automatic window opener, but I've decided to sell it seperately as well.
 
-### If you want to program it yourself, you can find the code [here](https://github.com/Valar-Systems/VAL-2000/tree/main/Firmware).
+### 1. Elderly & Disabled
 
-### If you want to learn how Trinamic drivers work and a deep dive into the code, please visit [this guide](https://valarsystems.com/blogs/val-2000/ultimate-guide).
+Many windows and sliding doors are very heavy and require a substantial amount of force to move them. This board can be turned into an automatic window opener like the [Glasscalibur](https://github.com/Valar-Systems/Glasscalibur) or a sliding door opener like [this](https://youtu.be/Wihzpsax5Kg). The possibilities here are andless
+
+### 2. Energy efficiency
+
+Using Home Assistant, you can automate your windows to automatically close when the air conditining turns on, or to open to let the cool night air in. You can control different vents in your HVAC system as well or maybe build some exteriour shading devices that adjust with the sun. For example, the [MorningRope](https://github.com/Valar-Systems/MorningRope) can be programmed to close your blackout curtains to keep the sun from increasing your room temp.
+
+### 3. Privacy
+
+Convert your curtains into smart curtains. For example, set the [MorningRope](https://github.com/Valar-Systems/MorningRope) curtains to close during sunset so that no one can see inside your home.
+
+### 4. Waking up
+
+Wake up naturally and feel more rested with the [MorningRope](https://github.com/Valar-Systems/MorningRope) by letting the sun gently wake you. This board open your curtains for you like a natural alarm close.
+
+## Where can I buy it?
+
+To purchase the VAL-2000, please visit out website [here](https://valarsystems.com/products/val-2000).
+
+## Do I need to buy one?
+
+Absolutely not, but in the end it's much faster and cheaper to buy the board than to recreate an ESP32/TMC2209 board.
+
+Shipping this out of the US can be expensive so it may make more sense to build one yourself. Please visit the [schematic page](https://github.com/Valar-Systems/VAL-2000/blob/main/Schematic.pdf) to build one.
+
+
+
+#### If you want to program it yourself, you can find the code [here](https://github.com/Valar-Systems/VAL-2000/tree/main/Firmware).
+
+#### If you want to learn how Trinamic drivers work and a deep dive into the code, please visit [this guide](https://valarsystems.com/blogs/val-2000/ultimate-guide).
 
 The VAL-2000 contains the following components in a very small package:
 
