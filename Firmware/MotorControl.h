@@ -161,6 +161,7 @@ void move_motor() {
   {
     Serial.println("DO NOTHING!");
   }
+  
   current_position = stepper->getCurrentPosition();
   printf("Motor Function Complete\n");
 }
