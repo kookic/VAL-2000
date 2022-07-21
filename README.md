@@ -59,7 +59,7 @@ This combination will get you started building nearly any motion control project
 Setup only takes 3 minutes and 3 steps
 
 1. Connect any bipolar (4-wire) stepper motor
-2. Connect a 12V 2A+ power cord (2.1mm x 5.5mm barrel connector)
+2. Connect 12V 2A+ power to terminal block
 3. Open a browser and connect via WiFi
 
 To learn how to program the TMC2209. please visit the [Ultimate Guide](https://valarsystems.com/blogs/val-2000/ultimate-guide) to programming it.
