@@ -1,4 +1,4 @@
-#include <Arduino.h>
+  #include <Arduino.h>
 #include <ESPUI.h>
 #include "FastAccelStepper.h"
 #include <HardwareSerial.h>
@@ -19,6 +19,7 @@ void setup() {
   preferences.begin("local", false);
   load_preferences();
   setup_motors();
+  
   setup_leds();
   API();
   ESPUIsetup();
