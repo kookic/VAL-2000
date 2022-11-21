@@ -114,3 +114,4 @@ This dual-core ESP32 sits at the heart of the board. Its low-cost to high-perfor
 
 ![alt text](/Media/VAL-2000-angle.jpg)
 
+![alt text](/VAL-2000-Schematic.jpg)
