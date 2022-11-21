@@ -1,5 +1,9 @@
 # VAL-2000
 
+## New Guide Released!
+
+I've written a short Kindle book on programming Trinamic drivers. Please support this project by purchasing it on [Amazon](https://amzn.to/3EQj0f3)
+
 ## The VAL-2000 is the easiest, fastest, cheapest, safest, wireless and best stepper motor motion controller. 
 
 Precisely control a motor's distance, speed, current, and stall characteristics within minutes of receiving it. No programming experience is required. 
