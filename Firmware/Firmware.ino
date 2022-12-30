@@ -1,4 +1,4 @@
-  #include <Arduino.h>
+#include <Arduino.h>
 #include <ESPUI.h>
 #include "FastAccelStepper.h"
 #include <HardwareSerial.h>
@@ -11,6 +11,11 @@
 #include "API.h"
 #include "ESPUI.h"
 
+static uint32_t previous_load_measuring_time = 0; //for timing the load measures
+bool MeasuringLoadStarted = false; //the measuring process is started only when a movement command of the claw is sent via Bluetooth
+
+int load_measures_counter = 0; //10 load measures will be averaged
+unsigned long accumulated = 0; //this accumulates  the 10 load measures
 
 void setup() {
 
@@ -19,7 +24,7 @@ void setup() {
   preferences.begin("local", false);
   load_preferences();
   setup_motors();
-  
+
   setup_leds();
   API();
   ESPUIsetup();
@@ -34,7 +39,7 @@ void setup() {
     ,  NULL
     ,  1);
 
-#ifdef CAP_BUTTONS
+
   xTaskCreatePinnedToCore(
     ButtonTask //Motor Task
     ,  "ButtonTask"   // A name just for humans
@@ -43,7 +48,7 @@ void setup() {
     ,  3  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
     ,  NULL
     ,  0);
-#endif
+
 }
 
 
@@ -56,124 +61,48 @@ void loop()
 /*---------------------- Tasks ---------------------*/
 /*--------------------------------------------------*/
 
-#ifdef CAP_BUTTONS
+
 void ButtonTask(void *pvParameters)  // Motor Task
 {
   (void) pvParameters;
 
   for (;;)
   {
-
-    if (btn1Press == 1) {
-
-      button1Timer = millis();
-      waitButton2Timer = millis() + 1000;
-
-      if (millis() < waitButton2Timer && btn2Press == 1 && motorRunning == false) {
-        Serial.println("START MOTOR CLOSE");
-        motorRunning = true;
+    
+    if (run_motor == true) 
+    {
+      int loadAngle = 255;
+      int loadTrip = 0;
+      Serial.println("Motor Running");
+      delay(200); // only delay one time
+          
+        while(run_motor == true)
+          { 
+          
+          loadAngle = driver.SG_RESULT();
+              if (loadAngle == 0)
+              {
+               loadTrip++;
+               loadAngle = 255;
+              }
         
-        if (run_motor == true && move_to_step == max_steps){
-          stepper->forceStop();
-          move_to_step = 0;
-          stepper->moveTo(move_to_step);
-          }
-        
-        else if(run_motor == true && move_to_step == 0 )
-        {
-          stepper->forceStop();
-          delay(100);
-          move_to_step = stepper->getCurrentPosition();
-          stepper->moveTo(move_to_step);
-        }
-        else
-          {
-        move_to_step = 0;
-        run_motor = true;
+              if (loadTrip >= 3)
+              {
+               Serial.println("STALL DETECTED");
+               stalled_motor = true;
+               break;
+              }
           }
         }
-      
-      
-
-      if (brightness0 <= 255 && brightness0 >= 0) {
-        ledcWrite(0, brightness0); // set the brightness of the LED
-        brightness0 = brightness0 + fade0Amount;
-        vTaskDelay(30);
-      }
-
-      //Fade instead of turn off
-      if (brightness0 > 255) {
-        brightness0 = 255;
-        fade0Amount = -fade0Amount;
-      }
-
-      if (brightness0 < 0) {
-
-        brightness0 = 0;
-        ledcWrite(0, brightness0);
-        btn1Press = 0;
-        fade0Amount = 15;
-        motorRunning = false;
-      }
-    }
-
-    if (btn2Press == 1) {
-      button2Timer = millis();
-      waitButton1Timer = millis() + 1000;
-
-      if (millis() < waitButton1Timer && btn1Press == 1 && motorRunning == false ) {
-        Serial.println("START MOTOR OPEN");
-        motorRunning = true;
-        
-        if (run_motor == true && move_to_step == 0){
-          stepper->forceStop();
-          move_to_step = max_steps;
-          stepper->moveTo(move_to_step);
-          }
-        
-        else if(run_motor == true && move_to_step == max_steps )
-        {
-          stepper->forceStop();
-          delay(100);
-          move_to_step = stepper->getCurrentPosition();
-          stepper->moveTo(move_to_step);
-        }
-        else
-          {
-        move_to_step = max_steps;
-        run_motor = true;
-          }
-        }
-
-      if (brightness1 <= 255 && brightness1 >= 0) {
-        ledcWrite(1, brightness1); // set the brightness of the LED
-        brightness1 = brightness1 + fade1Amount;
-        vTaskDelay(30);
-      }
-
-      //Fade instead of turn off
-      if (brightness1 > 255) {
-        brightness1 = 255;
-        fade1Amount = -fade1Amount;
-      }
-
-      if (brightness1 < 0) {
-
-        brightness1 = 0;
-        ledcWrite(1, brightness1);
-        btn2Press = 0;
-        fade1Amount = 15;
-        motorRunning = false;
-      }
-    }
 
     else
     {
       vTaskDelay(1);
+
     }
   }
 }
-#endif
+
 
 void MotorTask(void *pvParameters)  // Motor Task
 {
@@ -187,6 +116,7 @@ void MotorTask(void *pvParameters)  // Motor Task
       Serial.println("Run Motor Function");
       move_motor();
       run_motor = false;
+      stalled_motor = false; // Reset Stall flag 
       ESPUI.updateLabel(positionLabel, String(int(((float)current_position / (float)max_steps) * 100)));
       Serial.println("Motor Complete");
     }

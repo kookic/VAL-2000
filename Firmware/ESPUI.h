@@ -47,10 +47,22 @@ void numberStallCall(Control* sender, int type)
 {
   Serial.println(sender->value);
   stall = sender->value.toInt();
+
+  if(stall == 0){
+
+  detachInterrupt(STALLGUARD);
+  driver.SGTHRS(0);
+  preferences.putInt ("stall", 0);
+    
+  }else{
+
+  attachInterrupt(STALLGUARD, stalled_position, RISING);
   driver.SGTHRS(stall);
   preferences.putInt ("stall", stall);
   Serial.print("stall: ");
   Serial.println(stall);
+  }
+
 }
 
 void sliderPosition(Control* sender, int type)

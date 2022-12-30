@@ -58,6 +58,7 @@ void load_preferences() {
   max_steps = preferences.getInt("max_steps", 300000);
   current = preferences.getLong("current", 1000);
   stall = preferences.getInt("stall", 10);
+
   accel = preferences.getInt("accel", 10000);
   max_speed = preferences.getInt("max_speed", 30000);
   open_direction =  preferences.getInt("open_dir", 0);

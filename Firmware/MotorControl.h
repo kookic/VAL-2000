@@ -210,7 +210,12 @@ void setup_motors() {
   stepper->setEnablePin(ENABLE_PIN);
   stepper->setAutoEnable(true);
 
+  if (stall == 0){
+  detachInterrupt(STALLGUARD);
+  }else{
   attachInterrupt(STALLGUARD, stalled_position, RISING);
+  }
+  
   attachInterrupt(WIFI_PIN, wifi_button_press, FALLING);
   attachInterrupt(BUTTON1, button1pressed, FALLING);
   attachInterrupt(BUTTON2, button2pressed, FALLING);
