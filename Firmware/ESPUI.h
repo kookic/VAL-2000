@@ -45,18 +45,20 @@ void numberCurrentCall(Control* sender, int type)
 
 void numberStallCall(Control* sender, int type)
 {
-  Serial.println(sender->value);
+  //Serial.println(sender->value);
   stall = sender->value.toInt();
 
   if(stall == 0){
-
-  detachInterrupt(STALLGUARD);
+  digitalWrite(ENABLE_PIN, HIGH);      
+  detachInterrupt(digitalPinToInterrupt(STALLGUARD));
   driver.SGTHRS(0);
   preferences.putInt ("stall", 0);
+  Serial.print("stall: ");
+  Serial.println(stall);
     
   }else{
-
-  attachInterrupt(STALLGUARD, stalled_position, RISING);
+  digitalWrite(ENABLE_PIN, HIGH);
+  attachInterrupt(digitalPinToInterrupt(STALLGUARD), stalled_position, RISING);
   driver.SGTHRS(stall);
   preferences.putInt ("stall", stall);
   Serial.print("stall: ");

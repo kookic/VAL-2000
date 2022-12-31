@@ -46,29 +46,21 @@ TMC2209Stepper driver(&SERIAL_PORT_2, R_SENSE , DRIVER_ADDRESS);
 
 void IRAM_ATTR button1pressed()
 {
-  #ifdef CAP_BUTTONS
   btn1Press = 1; //
-  #else
   move_to_step = 0; //
   run_motor = true; //
-  #endif
 }
 
 void IRAM_ATTR button2pressed()
 {
-  #ifdef CAP_BUTTONS
   btn2Press = 1;
-  #else
   move_to_step = max_steps;
   run_motor = true;
-  #endif
-  
 }
 
 void IRAM_ATTR stalled_position()
 {
   stalled_motor = true;
-  stop_motor = true;
 }
 
 void IRAM_ATTR sensor_short()
@@ -211,16 +203,16 @@ void setup_motors() {
   stepper->setAutoEnable(true);
 
   if (stall == 0){
-  detachInterrupt(STALLGUARD);
+  detachInterrupt(digitalPinToInterrupt(STALLGUARD));
   }else{
-  attachInterrupt(STALLGUARD, stalled_position, RISING);
+  attachInterrupt(digitalPinToInterrupt(STALLGUARD), stalled_position, RISING);
   }
   
-  attachInterrupt(WIFI_PIN, wifi_button_press, FALLING);
-  attachInterrupt(BUTTON1, button1pressed, FALLING);
-  attachInterrupt(BUTTON2, button2pressed, FALLING);
-  attachInterrupt(SENSOR1, sensor_long, FALLING);
-  attachInterrupt(SENSOR2, sensor_short, FALLING);
+  attachInterrupt(digitalPinToInterrupt(WIFI_PIN), wifi_button_press, FALLING);
+  attachInterrupt(digitalPinToInterrupt(BUTTON1), button1pressed, FALLING);
+  attachInterrupt(digitalPinToInterrupt(BUTTON2), button2pressed, FALLING);
+  attachInterrupt(digitalPinToInterrupt(SENSOR1), sensor_long, FALLING);
+  attachInterrupt(digitalPinToInterrupt(SENSOR2), sensor_short, FALLING);
 
 }
 

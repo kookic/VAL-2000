@@ -80,23 +80,26 @@ void ButtonTask(void *pvParameters)  // Motor Task
           { 
           
           loadAngle = driver.SG_RESULT();
-              if (loadAngle == 0)
-              {
-               loadTrip++;
-               loadAngle = 255;
-              }
+          Serial.print("SG_RESULT: ");
+          Serial.println(loadAngle);
+          //    if (loadAngle == 0)
+          //    {
+          //     loadTrip++;
+          //     loadAngle = 255;
+          //    }
         
-              if (loadTrip >= 3)
-              {
-               Serial.println("STALL DETECTED");
-               stalled_motor = true;
-               break;
-              }
+          //    if (loadTrip >= 3)
+          //    {
+          //    Serial.println("STALL DETECTED");
+          //     stalled_motor = true;
+          //     break;
+          //    }
           }
         }
 
     else
     {
+      Serial.println(digitalRead(STALLGUARD));
       vTaskDelay(1);
 
     }

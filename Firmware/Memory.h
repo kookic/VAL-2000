@@ -1,5 +1,5 @@
-bool stalled_motor = false;
-bool stop_motor = false;
+volatile bool stalled_motor = false;
+volatile bool stop_motor = false;
 volatile bool sensor1_trip = false;
 volatile bool sensor2_trip = false;
 int current_position;
