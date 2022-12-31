@@ -92,14 +92,14 @@ void ButtonTask(void *pvParameters)  // Motor Task
           //    {
           //    Serial.println("STALL DETECTED");
           //     stalled_motor = true;
-          //     break;
+          //     break; 
           //    }
           }
         }
 
     else
     {
-      Serial.println(digitalRead(STALLGUARD));
+      //Serial.println(digitalRead(STALLGUARD));
       vTaskDelay(1);
 
     }
