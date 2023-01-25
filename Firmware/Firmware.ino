@@ -25,7 +25,6 @@ void setup() {
   load_preferences();
   setup_motors();
 
-  setup_leds();
   API();
   ESPUIsetup();
 

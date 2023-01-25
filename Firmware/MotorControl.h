@@ -1,6 +1,3 @@
-//Uncomment this if using the additional Capacitive Buttons
-//#define CAP_BUTTONS
-
 uint16_t positionLabel;
 
 #include "soc/timer_group_struct.h"
@@ -16,17 +13,10 @@ uint16_t positionLabel;
 #define STALLGUARD 2
 #define SENSOR1 32
 #define SENSOR2 22
-#define LED1 33
-#define LED2 18
 
 #define SERIAL_PORT_2    Serial2    // TMC2208/TMC2224 HardwareSerial port
 #define DRIVER_ADDRESS   0b00       // TMC2209 Driver address according to MS1 and MS2
 #define R_SENSE          0.10f      // R_SENSE for current calc.  
-
-int brightness0 = 0;    // how bright the LED is
-int brightness1 = 0;    // how bright the LED is
-int fade0Amount = 15;    // how many points to fade the LED by
-int fade1Amount = 15;
 
 int button1Timer;
 int button2Timer;
@@ -214,19 +204,4 @@ void setup_motors() {
   attachInterrupt(digitalPinToInterrupt(SENSOR1), sensor_long, FALLING);
   attachInterrupt(digitalPinToInterrupt(SENSOR2), sensor_short, FALLING);
 
-}
-
-void setup_leds() {
-
-  ledcAttachPin(LED1, 1); // assign a led pins to a channel
-  ledcAttachPin(LED2, 0); // assign a led pins to a channel
-
-  ledcSetup(0, 5000, 8); // 12 kHz PWM, 8-bit resolution
-  ledcSetup(1, 5000, 8); // 12 kHz PWM, 8-bit resolution
-
-  pinMode(LED1, OUTPUT);
-  pinMode(LED2, OUTPUT);
-
-  ledcWrite(0, 0); // turn off LED
-  ledcWrite(1, 0); // turn off LED
 }
